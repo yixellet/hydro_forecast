@@ -5,9 +5,9 @@ from dailyPlot import plot
 
 year = 1979
 
-df = dfFromCsv('data/{}.csv'.format(str(year)))
+df = dfFromCsv('data/heps/{}.csv'.format(str(year)))
 
-fig = plot(df, 'date', 'common')
+fig = plot(df, 'date', 'common', {'date': 'Дата', 'common': 'Расход'}, title=year)
 
 app = Dash(__name__)
 
