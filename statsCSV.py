@@ -1,14 +1,15 @@
-from dash import Dash, dcc, html, Input, Output
-import json
+# from dash import Dash, dcc, html, Input, Output
+# import json
 from getDataFromCSV import dfFromCsv
 from dailyPlot import plot
 
-year = 1979
+year = 1961
 
 df = dfFromCsv('data/heps/{}.csv'.format(str(year)))
 
-fig = plot(df, 'date', 'common', {'date': 'Дата', 'common': 'Расход'}, title=year)
+fig = plot(df, 'date', ['common', 'diff'], {'date': 'Дата', 'value': 'Расход'}, title=year)
 
+"""
 app = Dash(__name__)
 
 app.layout = html.Div([
@@ -33,3 +34,4 @@ def display_structure(fig_json):
     return json.dumps(fig_json, indent=2)
 
 app.run_server(debug=True)
+"""

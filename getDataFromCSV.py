@@ -1,11 +1,9 @@
-from pandas import read_csv, to_datetime
+from pandas import read_csv
 
 def dfFromCsv(file):
-    data = read_csv(file, names=['date', 'common', 'spillway'])
-    # data['date'] = to_datetime(data['date'])
+    data = read_csv(file, names=['date', 'common', 'spillway', 'flood', 'max_discharge'])
     data['date'] = data['date'].astype("datetime64[ns]")
-    print(data.dtypes)
-    print(data.head)
+    data['diff'] = data['common'] - data['spillway']
     return data
 
 if __name__ == "__main__":
